@@ -3,10 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Definimos el nombre del paquete de nuestro trabajo o código -->
     <groupId>com.amazonaws</groupId>
-    <artifactId>ad-flink-streaming</artifactId>
+    <artifactId>ad-flink-streaming</artifactId> 
     <version>1.0.0</version>
 
+    <!-- Constantes que usaremos -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <buildDirectory>${project.basedir}/target</buildDirectory>
@@ -18,6 +20,7 @@
     </properties>
 
     <!-- Specify any jar dependencies (e.g. connectors) required -->
+    <!-- Flink-Kinesis Connector Dependency (LO DESCARGA) /Lo bueno que permite no estar descargando dependencias si es que lo necesitara, dependencias del connector, lo hace automaticamente/-->
     <dependencies>
         <dependency>
             <groupId>org.apache.flink</groupId>
@@ -26,7 +29,9 @@
         </dependency>
     </dependencies>
 
+    <!-- AQUI CONSTRUYE EL ARCHIVO TARGET -->
     <build>
+        <!-- Todo lo que construyas, guárdalo en target/ (ese nombre usa por defecto Maven)-->
         <directory>${buildDirectory}</directory>
         <plugins>
             <!-- Maven Shade Plugin to create the "fat-jar" with all required dependencies -->

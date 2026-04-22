@@ -1,8 +1,14 @@
+TEMPLATE STANDAR CUANDO TRABAJAMOS CON FLINK Y AWS:
+    ▼ pom.xml: el archivo que le dice a Maven qué descargar y cómo generar tu aplicación (por ejemplo, un JAR de Apache Flink). Después vamos a hacer mvn clean package para generar el zip. Y maven buscará el pom.xml por defecto.
+    ▼ application_properties.json: Todo ese JSON define el contexto completo del pipeline en tiempo real (durante ejecución). Primero indica qué archivo debe ejecutar Flink, luego de dónde leer los datos (dos streams) y finalmente a dónde enviar el resultado. 
+    ▼ main.py: Dónde está la lógica de la app. En este caso se leen los datos de cada stream mediante las tablas API/SQL nativas de flink y luego se hace la unión para depositarlo en una tabla resultante.
+    ▼ assembly.xml: En pom.xml definimos como se construye la app y que descargar, pero en assembly que forma parte o participa dentro de pom.xml, lo que se hace es algo más específico. En realidad assembly es quien genera el zip final, pero pom se encarga de construir las demás dependencias y estructura como tal del zip final.
+
 REQUISITOS:
-- Asegurarse de tener python 3.11
-- Asegurarse de tener Java11 (la versión correcta en realidad) instalado y configurado en la PC
-- Tener instalado Maven
-- Tener instalado apache flink
+- Asegurarse de tener python 3.11 (la lógica está hecha en python )
+- Asegurarse de tener Java11 (la versión correcta en realidad) instalado y configurado en la PC (si corremos la app en forma local pero también se requiere dado que maven trabaja con Java para poder generar el zip)
+- Tener instalado Maven (porque queremos el zip con las dependencias y todo para correrlo en aws)
+- Tener instalado apache flink (pyflink)
 
 mock_data_generator.py:
 El mock_data_generator.py es un archivo python que nos ayuda a generar los datos para simular el escenario. 
