@@ -4,10 +4,10 @@ import random
 import time
 from datetime import datetime, timedelta
 
-kinesis_client = boto3.client("kinesis", region_name="us_east-1")
+kinesis_client = boto3.client("kinesis", region_name="us-east-1")
 
-ad_impressions_stream_name = "AdImpressionsStreamInput"
-ad_clicks_stream_name = "ClicksStreamInput"
+ad_impressions_stream_name = "AdImpressionsStream"
+ad_clicks_stream_name = "AdClicksStream"
 
 campaigns = [
     {"id": "cmp001", "name": "Black Friday Sale"},

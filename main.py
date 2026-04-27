@@ -20,16 +20,11 @@ if is_local:
 
     APPLICATION_PROPERTIES_FILE_PATH = "application_properties.json"
     CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
-    # table_env.get_config().get_configuration().set_string(
-    #     "pipeline.jars",
-    #     f"file://{CURRENT_DIR}/pyflink-dependencies.jar"
-    # )
-
+    
     table_env.get_config().get_configuration().set_string(
-        "pipeline.jars",
-        f"file:///Users/shashankmishra/Desktop/pyflink-dependencies.jar"
+    "pipeline.jars",
+    f"file://{CURRENT_DIR}/pyflink-dependencies.jar"
     )
-
 
 def get_application_properties():
     if os.path.isfile(APPLICATION_PROPERTIES_FILE_PATH):
@@ -52,7 +47,7 @@ def main():
 
     # Define Ad Impressions source
     table_env.execute_sql(f"""
-        CREATE TABLE ad_impressions (
+        CREATE TABLE IF NOT EXISTS ad_impressions (
             ad_id STRING,
             impression_id STRING,
             campaign_id STRING,
@@ -77,7 +72,7 @@ def main():
 
     # Define Ad Clicks source
     table_env.execute_sql(f"""
-        CREATE TABLE ad_clicks (
+        CREATE TABLE IF NOT EXISTS ad_clicks (
             ad_id STRING,
             impression_id STRING,
             campaign_id STRING,
@@ -101,7 +96,7 @@ def main():
 
     # Define Joined Stream Sink
     table_env.execute_sql(f"""
-        CREATE TABLE joined_output (
+        CREATE TABLE IF NOT EXISTS joined_output (
             ad_id STRING,
             impression_id STRING,
             campaign_id STRING,
@@ -126,7 +121,7 @@ def main():
     # Uncomment this part to register table in flink
     # to print data on console
     # table_env.execute_sql("""
-    #     CREATE TABLE joined_output (
+    #     CREATE TABLE IF NOT EXISTS joined_output (
     #             ad_id STRING,
     #             impression_id STRING,
     #             campaign_id STRING,
