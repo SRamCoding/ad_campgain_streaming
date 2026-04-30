@@ -9,21 +9,21 @@
     {
       "PropertyGroupId": "AdImpressionsStream",
       "PropertyMap": {
-        "stream.name": "AdImpressionsStreamInput",
+        "stream.name": "AdImpressionsStream",
         "aws.region": "us-east-1"
       }
     },
     {
       "PropertyGroupId": "AdClicksStream",
       "PropertyMap": {
-        "stream.name": "ClicksStreamInput",
+        "stream.name": "AdClicksStream",
         "aws.region": "us-east-1"
       }
     },
     {
       "PropertyGroupId": "AdDestinationStream",
       "PropertyMap": {
-        "stream.name": "AdResultantOutput",
+        "stream.name": "AdDestinationStream",
         "aws.region": "us-east-1"
       }
     }
